@@ -1,28 +1,32 @@
 #include<stdio.h>
 void gradingStudents(int grades[], int n){
-    int finalGrades[n];
     for(int i=0;i<n;i++){
-        int x=grades[i]%5;
-        if(x==3 || x==4){
-            finalGrades[i]=grades[i]+5-x;
-        }else{
-            finalGrades[i]=grades[i];  
+        if(grades[i]<38 || grades[i]%5==0){
+            continue;
         }
-        if(grades[i]<38){
-            finalGrades[i]=grades[i];  //no need to round of as already fail
+        else{
+            int multipleOf5=((grades[i]/5)+1)*5;
+            int diff=multipleOf5-grades[i];
+            if(diff>=3){
+                continue;
+            }else{
+                grades[i]=multipleOf5;
+            }
         }
-
-    }
-    for(int i=0;i<n;i++){
-        printf("%d\t",finalGrades[i]);
     }
 }
 int main(){
     int n;
+    printf("Enter the number of students: ");
     scanf("%d",&n);
-    int arr[n];
+    int grades[n];
+    printf("Enter marks for each student: ");
     for(int i=0;i<n;i++){
-        scanf("%d",&arr[i]);
+        scanf("%d",&grades[i]);
     }
-    gradingStudents(arr,n);
+    gradingStudents(grades,n);
+    printf("After grading, the final marks are: ");
+    for(int i=0;i<n;i++){
+        printf("%d\t",grades[i]);
+    }
 }
