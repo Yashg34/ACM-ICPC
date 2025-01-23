@@ -1,27 +1,26 @@
 #include<stdio.h>
-void compareTriplets(int a[], int  b[]){
-    int score[]={0,0};
+void compareTriplets(int alice[3], int bob[3]){
+    int result[]={0,0};
     for(int i=0;i<3;i++){
-        if(a[i]>b[i]){
-            score[0]++;;
-        }else if(b[i]>a[i]){
-            score[1]++;
+        if(alice[i]>bob[i]){
+            result[0]++;
+        }else if(alice[i]<bob[i]){
+            result[1]++;
+        }else{
+            continue;
         }
     }
-    for(int i=0;i<2;i++){
-        printf("%d\t",score[i]);
-    }
+    printf("The scores are: %d\t%d",result[0],result[1]);
 }
 int main(){
-    int a[3],b[3];
-    printf("For Alice\n");
+    int alice[3],bob[3];
+    printf("Enter values for Alice: ");
     for(int i=0;i<3;i++){
-        scanf("%d",&a[i]);
+        scanf("%d",&alice[i]);
     }
-    printf("For Bob\n");
+    printf("Enter values for Bob: ");
     for(int i=0;i<3;i++){
-        scanf("%d",&b[i]);
+        scanf("%d",&bob[i]);
     }
-
-    compareTriplets(a,b);
+    compareTriplets(alice,bob);
 }
