@@ -1,19 +1,20 @@
 #include<stdio.h>
-int simpleArraySum(int array[]){
+int simpleArraySum(int array[], int n){
     int sum=0;
-    for(int i=0;i<sizeof(array);i++){
+    for(int i=0;i<n;i++){
         sum+=array[i];
     }
     return sum;
 }
+
 int main(){
     int n;
-    printf("Enter number of elements in array: ");
+    printf("Enter the number of elements: ");
     scanf("%d",&n);
     int array[n];
-    printf("Enter elements:\n");
+    printf("Enter values: ");
     for(int i=0;i<n;i++){
         scanf("%d",&array[i]);
     }
-    printf("Sum of elements of array= %d",simpleArraySum(array));
+    printf("The sum of elements is %d",simpleArraySum(array,n));
 }
