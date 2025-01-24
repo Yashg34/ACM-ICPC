@@ -1,33 +1,41 @@
 #include<stdio.h>
 #include<limits.h>
-void miniMaxSum(int arr[5]){
-    int min=INT_MAX,max=INT_MIN;
-    int maxSum=0,minSum=0;
-    for(int i=0;i<5;i++){   // to find max and min element
-        if(arr[i]>max){
-            max=arr[i];
-        }else if(arr[i]<min){
-            min=arr[i];
+void miniMaxSum(int arr[], int n){
+    int minEl,maxEl;
+    minEl=INT_MAX;
+    maxEl=INT_MIN;
+    for(int i=0;i<n;i++){
+        if(arr[i]>maxEl){
+            maxEl=arr[i];   // evaluates the maximum val in array
         }
-    }   
-    for(int i=0;i<5;i++){  // to find min sum
-        if(arr[i]==max){
-            continue;
+        if(arr[i]<minEl){
+            minEl=arr[i];   // evaluates the minimum val in array
         }
-        minSum+=arr[i];
     }
-    for(int i=0;i<5;i++){  // to find max sum
-        if(arr[i]==min){
+    int maxSum,minSum;
+    maxSum=minSum=0;
+    for(int i=0;i<n;i++){
+        if(arr[i]==minEl){
             continue;
         }
         maxSum+=arr[i];
     }
+    for(int i=0;i<n;i++){
+        if(arr[i]==maxEl){
+            continue;
+        }
+        minSum+=arr[i];
+    }
     printf("%d %d",minSum,maxSum);
 }
 int main(){
-    int arr[5];
-    for(int i=0;i<5;i++){
-        scanf("%d ",&arr[i]);
+    int n;
+    printf("Enter number of values in array: ");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter values of array: ");
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
     }
-    miniMaxSum(arr);
+    miniMaxSum(arr,n);
 }
